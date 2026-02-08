@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Lobster Force! 🦞</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial Black', Arial, sans-serif;
+            background: #000;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .neon-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ff006e 0%, #8338ec 50%, #3a86ff 100%);
+            opacity: 0.2;
+            z-index: -1;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 0.3; }
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 6rem;
+            margin-bottom: 2rem;
+            animation: bounce 1s ease-in-out;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 
+                0 0 10px #ff006e,
+                0 0 20px #ff006e;
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            color: #ff006e;
+            margin-bottom: 3rem;
+            font-family: Arial, sans-serif;
+        }
+
+        .message {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            font-family: Arial, sans-serif;
+            font-weight: normal;
+        }
+
+        .next-steps {
+            background: rgba(255,255,255,0.05);
+            border: 2px solid #8338ec;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            text-align: left;
+        }
+
+        .next-steps h2 {
+            font-size: 2rem;
+            color: #ff006e;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .step {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .step:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #3a86ff;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .step h3 {
+            font-size: 1.3rem;
+            color: #3a86ff;
+            margin-bottom: 0.5rem;
+        }
+
+        .step p {
+            font-family: Arial, sans-serif;
+            font-weight: normal;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.5rem 3rem;
+            background: linear-gradient(135deg, #ff006e, #8338ec);
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.3rem;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s;
+            margin: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255,0,110,0.6);
+        }
+
+        .cta-button.secondary {
+            background: linear-gradient(135deg, #8338ec, #3a86ff);
+        }
+
+        footer {
+            margin-top: 3rem;
+            font-family: Arial, sans-serif;
+            font-weight: normal;
+            color: #888;
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 4rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .tagline {
+                font-size: 1.2rem;
+            }
+
+            .message {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="neon-bg"></div>
+
+    <div class="container">
+        <div class="logo">🦞</div>
+        <h1>WELCOME TO LOBSTER FORCE!</h1>
+        <p class="tagline">You're officially part of the movement.</p>
+
+        <div class="message">
+            <p>Thanks for joining! Your subscription is active and you now have full access to everything Lobster Force has to offer.</p>
+            <p style="margin-top: 1rem;"><strong>Check your email</strong> — we just sent you all the details.</p>
+        </div>
+
+        <div class="next-steps">
+            <h2>Your Next Steps</h2>
+
+            <div class="step">
+                <h3>1. Join Discord</h3>
+                <p>Connect with the community, access member-only channels, and participate in Beach Bar Philosophy sessions.</p>
+                <a href="https://discord.gg/lobsterforce" class="cta-button secondary" style="display: inline-block; margin-top: 0.5rem; font-size: 1rem; padding: 0.75rem 1.5rem;">Join Discord →</a>
+            </div>
+
+            <div class="step">
+                <h3>2. Get Your Member Badge</h3>
+                <p>Download your digital membership card and show the world you're Lobster Force.</p>
+                <a href="./member-badge.html" class="cta-button secondary" style="display: inline-block; margin-top: 0.5rem; font-size: 1rem; padding: 0.75rem 1.5rem;">Get Badge →</a>
+            </div>
+
+            <div class="step">
+                <h3>3. Submit Your Mullet</h3>
+                <p>Join the gallery. Share your flow. Get featured. Become a legend.</p>
+                <a href="./submit-mullet.html" class="cta-button secondary" style="display: inline-block; margin-top: 0.5rem; font-size: 1rem; padding: 0.75rem 1.5rem;">Submit Photo →</a>
+            </div>
+
+            <div class="step">
+                <h3>4. Explore the Merch</h3>
+                <p>Browse exclusive merch drops. Members get early access and special discounts.</p>
+                <a href="./merch.html" class="cta-button secondary" style="display: inline-block; margin-top: 0.5rem; font-size: 1rem; padding: 0.75rem 1.5rem;">Shop Merch →</a>
+            </div>
+        </div>
+
+        <p style="font-family: Arial, sans-serif; font-weight: normal; margin-bottom: 2rem;">
+            Questions? Hit us up at <a href="mailto:mullet@mulletmcnasty.com" style="color: #ff006e; text-decoration: none;">mullet@mulletmcnasty.com</a>
+        </p>
+
+        <a href="index.html" class="cta-button">Back to Home</a>
+
+        <footer>
+            <p style="margin-top: 2rem; color: #ff006e; font-weight: bold;">🦞 No apologies. Just mullets. 🦞</p>
+        </footer>
+    </div>
+
+    <!-- Google Analytics (add your GA4 ID) -->
+    <script>
+        // Track successful subscription
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'subscription_complete', {
+                event_category: 'ecommerce',
+                event_label: 'membership'
+            });
+        }
+    </script>
+</body>
+</html>
