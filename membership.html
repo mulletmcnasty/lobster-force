@@ -253,13 +253,59 @@
         <p class="tagline">Choose Your Level. Own Your Mullet.</p>
     </header>
 
-    <nav style="text-align: center; margin: 2rem 0; font-family: Arial, sans-serif; font-weight: normal;">
-        <a href="index.html" style="color: #fff; text-decoration: none; margin: 0 1rem; padding: 0.5rem 1rem;">Home</a>
-        <a href="membership.html" style="color: #ff006e; text-decoration: none; margin: 0 1rem; padding: 0.5rem 1rem; border: 1px solid #ff006e;">Join</a>
-        <a href="gallery.html" style="color: #fff; text-decoration: none; margin: 0 1rem; padding: 0.5rem 1rem;">Gallery</a>
-        <a href="merch.html" style="color: #fff; text-decoration: none; margin: 0 1rem; padding: 0.5rem 1rem;">Merch</a>
-        <a href="about.html" style="color: #fff; text-decoration: none; margin: 0 1rem; padding: 0.5rem 1rem;">About</a>
-        <a href="portal/index.html" style="color: #fff; text-decoration: none; margin: 0 1rem; padding: 0.5rem 1rem;">Portal</a>
+    <style>
+        nav {
+            text-align: center;
+            margin: 2rem 0;
+            font-family: Arial, sans-serif;
+            font-weight: normal;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid transparent;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        nav a:hover {
+            border-color: #ff006e;
+            color: #ff006e;
+        }
+
+        nav a.active {
+            border-color: #ff006e;
+            color: #ff006e;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            nav a {
+                display: block;
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="membership.html" class="active">Join</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="merch.html">Merch</a>
+        <a href="about.html">About</a>
+        <a href="portal/index.html">Portal</a>
     </nav>
 
     <div class="pricing-grid">
