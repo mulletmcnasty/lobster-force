@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mullet Gallery - Lobster Force</title>
+    <meta name="description" content="Browse the Lobster Force mullet gallery. Business in the front, party in the back.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial Black', Arial, sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .neon-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ff006e 0%, #8338ec 50%, #3a86ff 100%);
+            opacity: 0.15;
+            z-index: -1;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.15; }
+            50% { opacity: 0.25; }
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 2rem 2rem;
+        }
+
+        .logo {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            letter-spacing: 0.1em;
+            text-shadow: 0 0 10px #ff006e, 0 0 20px #ff006e;
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: #ff006e;
+            font-family: Arial, sans-serif;
+            font-weight: normal;
+            margin-bottom: 2rem;
+        }
+
+        nav {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-family: Arial, sans-serif;
+            font-weight: normal;
+            padding: 0.5rem 1rem;
+            border: 1px solid transparent;
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            border-color: #ff006e;
+            color: #ff006e;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .filters {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid #8338ec;
+            color: #fff;
+            margin: 0.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: Arial, sans-serif;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: rgba(131,56,236,0.3);
+            border-color: #ff006e;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .gallery-item {
+            background: rgba(255,255,255,0.05);
+            border: 2px solid #8338ec;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(131,56,236,0.4);
+            border-color: #ff006e;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .gallery-info {
+            padding: 1.5rem;
+        }
+
+        .gallery-title {
+            font-size: 1.3rem;
+            color: #ff006e;
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-meta {
+            font-family: Arial, sans-serif;
+            font-weight: normal;
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 1rem;
+        }
+
+        .gallery-style {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(58,134,255,0.2);
+            border: 1px solid #3a86ff;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            color: #3a86ff;
+            font-family: Arial, sans-serif;
+            margin-right: 0.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.5rem 3rem;
+            background: linear-gradient(135deg, #ff006e, #8338ec);
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.3rem;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s;
+            margin: 2rem 0;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255,0,110,0.6);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            font-family: Arial, sans-serif;
+            font-weight: normal;
+        }
+
+        .empty-state h2 {
+            font-size: 2rem;
+            color: #ff006e;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            font-family: Arial, sans-serif;
+            font-weight: normal;
+        }
+
+        @media (max-width: 768px) {
+            .logo { font-size: 3rem; }
+            h1 { font-size: 2rem; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            nav a { display: block; margin: 0.5rem 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="neon-bg"></div>
+
+    <header>
+        <div class="logo">🦞</div>
+        <h1>MULLET GALLERY</h1>
+        <p class="tagline">Celebrating the Flow</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="membership.html">Join</a>
+        <a href="gallery.html" style="border-color: #ff006e; color: #ff006e;">Gallery</a>
+        <a href="merch.html">Merch</a>
+        <a href="about.html">About</a>
+        <a href="portal/index.html">Member Portal</a>
+    </nav>
+
+    <div class="container">
+        <div class="filters">
+            <button class="filter-btn active" onclick="filterGallery('all')">All Mullets</button>
+            <button class="filter-btn" onclick="filterGallery('classic')">Classic</button>
+            <button class="filter-btn" onclick="filterGallery('modern')">Modern</button>
+            <button class="filter-btn" onclick="filterGallery('hockey')">Hockey</button>
+            <button class="filter-btn" onclick="filterGallery('country')">Country</button>
+            <button class="filter-btn" onclick="filterGallery('featured')">⭐ Featured</button>
+        </div>
+
+        <div id="galleryGrid" class="gallery-grid">
+            <!-- Gallery items will be loaded here -->
+        </div>
+
+        <div id="emptyState" class="empty-state" style="display: none;">
+            <h2>No Mullets Yet!</h2>
+            <p>Be the first to showcase your flow.</p>
+            <a href="portal/submit.html" class="cta-button">Submit Your Mullet</a>
+        </div>
+
+        <div style="text-align: center; margin-top: 4rem;">
+            <h2 style="color: #ff006e; margin-bottom: 1rem;">Ready to Join?</h2>
+            <p style="font-family: Arial, sans-serif; font-weight: normal; margin-bottom: 2rem;">
+                Submit your mullet and become part of the gallery.
+            </p>
+            <a href="membership.html" class="cta-button">Join Lobster Force</a>
+        </div>
+    </div>
+
+    <footer>
+        <p style="color: #ff006e; font-weight: bold; margin-bottom: 1rem;">🦞 No apologies. Just mullets. 🦞</p>
+        <p style="color: #888;">
+            <a href="about.html" style="color: #888; text-decoration: none;">About</a> | 
+            <a href="faq.html" style="color: #888; text-decoration: none;">FAQ</a> | 
+            <a href="contact.html" style="color: #888; text-decoration: none;">Contact</a> | 
+            <a href="terms.html" style="color: #888; text-decoration: none;">Terms</a> | 
+            <a href="privacy.html" style="color: #888; text-decoration: none;">Privacy</a>
+        </p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        // Supabase config
+        const SUPABASE_URL = 'https://xvsdpufvuxsqozhqihmv.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh2c2RwdWZ2dXhzcW96aHFpaG12Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA1NjM0NDMsImV4cCI6MjA4NjEzOTQ0M30.8p6Ls7Gf5XuzbHtgzDGMP23l93w5Z15GIRgenSET6Dc';
+        
+        const { createClient } = supabase;
+        const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        let allSubmissions = [];
+        let currentFilter = 'all';
+
+        // Load gallery on page load
+        async function loadGallery() {
+            try {
+                const { data, error } = await supabaseClient
+                    .from('submissions')
+                    .select('*')
+                    .in('status', ['approved', 'featured'])
+                    .order('created_at', { ascending: false });
+
+                if (error) throw error;
+
+                allSubmissions = data || [];
+                renderGallery();
+            } catch (error) {
+                console.error('Error loading gallery:', error);
+                // Show empty state
+                document.getElementById('emptyState').style.display = 'block';
+            }
+        }
+
+        // Render gallery items
+        function renderGallery() {
+            const grid = document.getElementById('galleryGrid');
+            const emptyState = document.getElementById('emptyState');
+
+            let filtered = allSubmissions;
+            if (currentFilter !== 'all') {
+                if (currentFilter === 'featured') {
+                    filtered = allSubmissions.filter(s => s.status === 'featured');
+                } else {
+                    filtered = allSubmissions.filter(s => s.style === currentFilter);
+                }
+            }
+
+            if (filtered.length === 0) {
+                grid.style.display = 'none';
+                emptyState.style.display = 'block';
+                return;
+            }
+
+            grid.style.display = 'grid';
+            emptyState.style.display = 'none';
+
+            grid.innerHTML = filtered.map(item => `
+                <div class="gallery-item" onclick="openModal('${item.id}')">
+                    <img src="${item.photo_url}" alt="${item.title}" class="gallery-image">
+                    <div class="gallery-info">
+                        <div class="gallery-title">${item.title}</div>
+                        <div class="gallery-meta">
+                            ${new Date(item.created_at).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+                            ${item.instagram_handle ? ' | ' + item.instagram_handle : ''}
+                        </div>
+                        ${item.style ? `<span class="gallery-style">${item.style}</span>` : ''}
+                        ${item.status === 'featured' ? '<span class="gallery-style" style="background: rgba(255,0,110,0.2); border-color: #ff006e; color: #ff006e;">⭐ Featured</span>' : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Filter gallery
+        function filterGallery(filter) {
+            currentFilter = filter;
+            
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            renderGallery();
+        }
+
+        // Open detail modal (future feature)
+        function openModal(id) {
+            // TODO: Show full-size image with details in modal
+            alert('Detail view coming soon!');
+        }
+
+        // Load gallery on page load
+        document.addEventListener('DOMContentLoaded', loadGallery);
+    </script>
+</body>
+</html>
