@@ -62,7 +62,7 @@ async function handleSubmit(event) {
             const fileName = `${session.user.id}-${Date.now()}.${fileExt}`;
             const filePath = `submissions/${fileName}`;
             
-            const { data: uploadData, error: uploadError } = await supabase.storage
+            const { data: uploadData, error: uploadError } = await supabaseClient.storage
                 .from('mullet-gallery')
                 .upload(filePath, photoFile);
             
@@ -91,7 +91,7 @@ async function handleSubmit(event) {
             created_at: new Date().toISOString()
         };
         
-        if (supabase) {
+        if (supabaseClient) {
             const { error: dbError } = await supabase
                 .from('submissions')
                 .insert([submission]);

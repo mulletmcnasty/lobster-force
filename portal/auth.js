@@ -15,7 +15,8 @@ const SUPABASE_URL = 'https://xvsdpufvuxsqozhqihmv.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh2c2RwdWZ2dXhzcW96aHFpaG12Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA1NjM0NDMsImV4cCI6MjA4NjEzOTQ0M30.8p6Ls7Gf5XuzbHtgzDGMP23l93w5Z15GIRgenSET6Dc';
 
 // Initialize Supabase client
-const supabase = supabase ? supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+const { createClient } = supabase;
+const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 /**
  * Show message to user
@@ -43,13 +44,13 @@ async function handleLogin(event) {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     
-    if (!supabase) {
+    if (!supabaseClient) {
         showMessage('Authentication system not configured. Please set up Supabase.', 'error');
         return;
     }
     
     try {
-        const { data, error } = await supabase.auth.signInWithPassword({
+        const { data, error } = await supabaseClient.auth.signInWithPassword({
             email,
             password
         });
@@ -77,13 +78,13 @@ async function handlePasswordReset(event) {
     
     const email = document.getElementById('resetEmail').value;
     
-    if (!supabase) {
+    if (!supabaseClient) {
         showMessage('Authentication system not configured.', 'error');
         return;
     }
     
     try {
-        const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        const { error } = await supabaseClientClient.auth.resetPasswordForEmail(email, {
             redirectTo: `${window.location.origin}/portal/reset-password.html`
         });
         
@@ -106,13 +107,13 @@ async function handlePasswordReset(event) {
  * Handle logout
  */
 async function handleLogout() {
-    if (!supabase) {
+    if (!supabaseClient) {
         window.location.href = 'index.html';
         return;
     }
     
     try {
-        const { error } = await supabase.auth.signOut();
+        const { error } = await supabaseClientClient.auth.signOut();
         if (error) throw error;
         
         window.location.href = 'index.html';
@@ -126,7 +127,7 @@ async function handleLogout() {
  * Check if user is authenticated
  */
 async function checkAuth() {
-    if (!supabase) {
+    if (!supabaseClient) {
         // Demo mode - allow access
         return {
             id: 'demo-user',
@@ -138,7 +139,7 @@ async function checkAuth() {
     }
     
     try {
-        const { data: { user } } = await supabase.auth.getUser();
+        const { data: { user } } = await supabaseClientClient.auth.getUser();
         
         if (!user) {
             // Not logged in, redirect to login page
@@ -160,7 +161,7 @@ async function checkAuth() {
  * Get current user session
  */
 async function getSession() {
-    if (!supabase) {
+    if (!supabaseClient) {
         // Demo mode
         return {
             user: {
@@ -176,7 +177,7 @@ async function getSession() {
     }
     
     try {
-        const { data: { session } } = await supabase.auth.getSession();
+        const { data: { session } } = await supabaseClient.auth.getSession();
         return session;
     } catch (error) {
         console.error('Get session error:', error);

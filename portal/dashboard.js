@@ -78,7 +78,7 @@ async function loadDashboard() {
  */
 async function getUserData(userId) {
     // Demo data if Supabase not configured
-    if (!supabase || userId === 'demo-user') {
+    if (!supabaseClient || userId === 'demo-user') {
         return {
             name: 'Demo User',
             tier: 'lobster',

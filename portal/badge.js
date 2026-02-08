@@ -131,7 +131,7 @@ const TIER_CONFIG = {
 
 // Placeholder getUserData function (will use from auth.js in production)
 async function getUserData(userId) {
-    if (!supabase || userId === 'demo-user') {
+    if (!supabaseClient || userId === 'demo-user') {
         return {
             name: 'Demo User',
             tier: 'lobster',
