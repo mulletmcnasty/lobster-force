@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Lobster Force</title>
+    <meta name="description" content="The story of Lobster Force. Born from a dive bar conversation and built by people who refuse to apologize.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial Black', Arial, sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .neon-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ff006e 0%, #8338ec 50%, #3a86ff 100%);
+            opacity: 0.15;
+            z-index: -1;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.15; }
+            50% { opacity: 0.25; }
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 2rem 2rem;
+        }
+
+        .logo {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            letter-spacing: 0.1em;
+            text-shadow: 0 0 10px #ff006e, 0 0 20px #ff006e;
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: #ff006e;
+            font-family: Arial, sans-serif;
+            font-weight: normal;
+            margin-bottom: 2rem;
+        }
+
+        nav {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-family: Arial, sans-serif;
+            font-weight: normal;
+            padding: 0.5rem 1rem;
+            border: 1px solid transparent;
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            border-color: #ff006e;
+            color: #ff006e;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .story-section {
+            margin-bottom: 4rem;
+        }
+
+        .story-section h2 {
+            font-size: 2.5rem;
+            color: #ff006e;
+            text-shadow: 0 0 20px rgba(255,0,110,0.6);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .story-section p {
+            font-family: Arial, sans-serif;
+            font-weight: normal;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #ccc;
+        }
+
+        .story-section strong {
+            color: #fff;
+        }
+
+        .highlight-box {
+            background: rgba(255,0,110,0.1);
+            border-left: 4px solid #ff006e;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+
+        .highlight-box p {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: #fff;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-card {
+            background: rgba(255,255,255,0.05);
+            border: 2px solid #8338ec;
+            padding: 2rem;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+
+        .value-card:hover {
+            background: rgba(131,56,236,0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(131,56,236,0.3);
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .value-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #3a86ff;
+        }
+
+        .value-card p {
+            font-family: Arial, sans-serif;
+            font-weight: normal;
+            line-height: 1.6;
+            font-size: 1rem;
+            color: #ccc;
+        }
+
+        .founder-section {
+            background: rgba(255,255,255,0.05);
+            border: 2px solid #ff006e;
+            border-radius: 15px;
+            padding: 3rem;
+            margin: 4rem 0;
+        }
+
+        .founder-section h2 {
+            font-size: 2.5rem;
+            color: #ff006e;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .founder-content {
+            font-family: Arial, sans-serif;
+            font-weight: normal;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .founder-content p {
+            margin-bottom: 1.5rem;
+            color: #ccc;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .stat {
+            padding: 2rem;
+            background: rgba(58,134,255,0.1);
+            border: 2px solid #3a86ff;
+            border-radius: 10px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            color: #3a86ff;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-family: Arial, sans-serif;
+            font-weight: normal;
+            font-size: 1rem;
+            color: #ccc;
+        }
+
+        .cta-box {
+            text-align: center;
+            padding: 3rem;
+            background: linear-gradient(135deg, rgba(255,0,110,0.2), rgba(131,56,236,0.2));
+            border-radius: 15px;
+            margin: 4rem 0;
+        }
+
+        .cta-box h2 {
+            font-size: 2rem;
+            color: #ff006e;
+            margin-bottom: 1rem;
+        }
+
+        .cta-box p {
+            font-family: Arial, sans-serif;
+            font-weight: normal;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.5rem 3rem;
+            background: linear-gradient(135deg, #ff006e, #8338ec);
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.3rem;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255,0,110,0.6);
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            font-family: Arial, sans-serif;
+            font-weight: normal;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .logo { font-size: 3rem; }
+            h1 { font-size: 2rem; }
+            nav a { display: block; margin: 0.5rem 0; }
+            .story-section h2 { font-size: 2rem; }
+            .story-section p { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="neon-bg"></div>
+
+    <header>
+        <div class="logo">🦞</div>
+        <h1>ABOUT</h1>
+        <p class="tagline">The Story of Lobster Force</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="membership.html">Join</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="merch.html">Merch</a>
+        <a href="about.html" style="border-color: #ff006e; color: #ff006e;">About</a>
+        <a href="portal/index.html">Member Portal</a>
+    </nav>
+
+    <div class="container">
+        <div class="story-section">
+            <h2>How It Started</h2>
+            <p>
+                <strong>February 8, 2026.</strong> A dive bar somewhere on the coast. Neon signs buzzing. Jukebox playing Skynyrd. 
+                Three people with mullets at the bar, none of them knowing each other, all of them getting the same look from a table of tech bros in the corner.
+            </p>
+            <p>
+                One of them—later known as the founder—turns to the others and says: <strong>"You know what? Fuck it. We should start a club."</strong>
+            </p>
+            <p>
+                And just like that, Lobster Force was born.
+            </p>
+
+            <div class="highlight-box">
+                <p>"We're not here to fit in. We're here to remind people that being yourself is the coolest thing you can do."</p>
+            </div>
+
+            <p>
+                It wasn't about the hair. It was never about the hair. It was about <strong>refusing to apologize</strong> for who you are. 
+                For working with your hands. For liking things that aren't cool anymore. For being loud, messy, and unapologetically real.
+            </p>
+            <p>
+                The mullet was just the perfect symbol: <strong>Business in the front, party in the back.</strong> Professional when you need to be. 
+                Wild when you want to be. A middle finger to anyone who says you can't be both.
+            </p>
+        </div>
+
+        <div class="story-section">
+            <h2>The Mission</h2>
+            <p>
+                Lobster Force exists to celebrate <strong>working-class pride, authenticity, and the refusal to conform.</strong>
+            </p>
+            <p>
+                We're building a movement for people who:
+            </p>
+            <ul style="font-family: Arial, sans-serif; font-weight: normal; font-size: 1.1rem; line-height: 2; margin-left: 2rem; color: #ccc;">
+                <li>Work hard and play harder</li>
+                <li>Choose honest over trendy</li>
+                <li>Believe dive bars are better than rooftop lounges</li>
+                <li>Think "weird" is a compliment</li>
+                <li>Know that the best people are the ones who don't give a damn what you think</li>
+            </ul>
+            <p style="margin-top: 2rem;">
+                This isn't a brand. It's a <strong>coalition of crustaceans</strong>—people with hard shells, soft hearts, and absolutely zero patience for pretentious bullshit.
+            </p>
+        </div>
+
+        <div class="story-section">
+            <h2>Core Values</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">💪</div>
+                    <h3>Work Hard, Molt Harder</h3>
+                    <p>Respect the grind. Embrace the transformation. Never stop growing.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🎸</div>
+                    <h3>Authentically Weird</h3>
+                    <p>The mullet isn't ironic. It's intentional. Own your weird.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🔧</div>
+                    <h3>Blue-Collar Pride</h3>
+                    <p>For the people who fix, build, and make shit happen.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🍻</div>
+                    <h3>Beach Bar Philosophy</h3>
+                    <p>Wisdom doesn't need a dress code. Some of the smartest people wear flip-flops.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">😎</div>
+                    <h3>Antihero Aesthetic</h3>
+                    <p>We're not the heroes. We're the side characters who steal the scene.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🦞</div>
+                    <h3>No Gatekeeping</h3>
+                    <p>All genders, all backgrounds, all walks of life. If you've got the spirit, you're in.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="founder-section">
+            <h2>Meet the Founder</h2>
+            <div class="founder-content">
+                <p>
+                    The founder of Lobster Force prefers to stay semi-anonymous—not out of mystery, but because <strong>this isn't about one person.</strong> 
+                    It's about all of us.
+                </p>
+                <p>
+                    What we can tell you: They're a former line cook, current bartender, occasional bouncer, and full-time believer that 
+                    the best conversations happen after midnight under neon lights.
+                </p>
+                <p>
+                    They've had a mullet for six years. They've been kicked out of country clubs, corporate offices, and one very uptight yoga studio. 
+                    They wear it as a badge of honor.
+                </p>
+                <p>
+                    Their philosophy? <strong>"If you're not making someone uncomfortable, you're not being yourself enough."</strong>
+                </p>
+                <p>
+                    Lobster Force started as a joke. Then it became a mission. Now it's a movement. And the founder couldn't be prouder.
+                </p>
+            </div>
+        </div>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number">∞</div>
+                <div class="stat-label">Apologies Given</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Authenticity Rate</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Mullet Energy</div>
+            </div>
+        </div>
+
+        <div class="cta-box">
+            <h2>Ready to Join?</h2>
+            <p>You don't need a perfect mullet. You just need the spirit.</p>
+            <a href="membership.html" class="cta-button">Join Lobster Force</a>
+        </div>
+    </div>
+
+    <footer>
+        <p style="color: #ff006e; font-weight: bold; margin-bottom: 1rem;">🦞 No apologies. Just mullets. 🦞</p>
+        <p style="color: #888;">
+            <a href="about.html" style="color: #888; text-decoration: none;">About</a> | 
+            <a href="faq.html" style="color: #888; text-decoration: none;">FAQ</a> | 
+            <a href="contact.html" style="color: #888; text-decoration: none;">Contact</a> | 
+            <a href="terms.html" style="color: #888; text-decoration: none;">Terms</a> | 
+            <a href="privacy.html" style="color: #888; text-decoration: none;">Privacy</a>
+        </p>
+    </footer>
+</body>
+</html>

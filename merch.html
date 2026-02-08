@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merch - Lobster Force</title>
+    <meta name="description" content="Official Lobster Force merchandise. Rep the mullet movement with pride.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial Black', Arial, sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .neon-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ff006e 0%, #8338ec 50%, #3a86ff 100%);
+            opacity: 0.15;
+            z-index: -1;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.15; }
+            50% { opacity: 0.25; }
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 2rem 2rem;
+        }
+
+        .logo {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            letter-spacing: 0.1em;
+            text-shadow: 0 0 10px #ff006e, 0 0 20px #ff006e;
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: #ff006e;
+            font-family: Arial, sans-serif;
+            font-weight: normal;
+            margin-bottom: 2rem;
+        }
+
+        nav {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-family: Arial, sans-serif;
+            font-weight: normal;
+            padding: 0.5rem 1rem;
+            border: 1px solid transparent;
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            border-color: #ff006e;
+            color: #ff006e;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            font-family: Arial, sans-serif;
+            font-weight: normal;
+        }
+
+        .intro p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .product-card {
+            background: rgba(255,255,255,0.05);
+            border: 2px solid #8338ec;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(131,56,236,0.4);
+            border-color: #ff006e;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 350px;
+            background: linear-gradient(135deg, rgba(255,0,110,0.2), rgba(131,56,236,0.2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image::after {
+            content: 'COMING SOON';
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            background: rgba(255,0,110,0.8);
+            padding: 0.5rem 1rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            font-family: Arial, sans-serif;
+            border-radius: 20px;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-size: 1.5rem;
+            color: #ff006e;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-desc {
+            font-family: Arial, sans-serif;
+            font-weight: normal;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            color: #ccc;
+        }
+
+        .product-price {
+            font-size: 1.3rem;
+            color: #3a86ff;
+            margin-bottom: 1rem;
+        }
+
+        .product-button {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #ff006e, #8338ec);
+            border: none;
+            color: #fff;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border-radius: 8px;
+            cursor: not-allowed;
+            opacity: 0.6;
+            font-family: 'Arial Black', Arial, sans-serif;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            color: #ff006e;
+            text-shadow: 0 0 20px rgba(255,0,110,0.6);
+            margin: 4rem 0 2rem;
+        }
+
+        .waitlist-box {
+            max-width: 600px;
+            margin: 3rem auto;
+            padding: 3rem;
+            background: rgba(255,255,255,0.05);
+            border: 2px solid #ff006e;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .waitlist-box h3 {
+            font-size: 2rem;
+            color: #ff006e;
+            margin-bottom: 1rem;
+        }
+
+        .waitlist-box p {
+            font-family: Arial, sans-serif;
+            font-weight: normal;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .waitlist-form {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .waitlist-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 1rem;
+            background: rgba(0,0,0,0.5);
+            border: 1px solid #8338ec;
+            color: #fff;
+            font-size: 1rem;
+            border-radius: 8px;
+            font-family: Arial, sans-serif;
+        }
+
+        .waitlist-input:focus {
+            outline: none;
+            border-color: #ff006e;
+        }
+
+        .waitlist-button {
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #ff006e, #8338ec);
+            border: none;
+            color: #fff;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Arial Black', Arial, sans-serif;
+            transition: all 0.3s;
+        }
+
+        .waitlist-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255,0,110,0.6);
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            font-family: Arial, sans-serif;
+            font-weight: normal;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .logo { font-size: 3rem; }
+            h1 { font-size: 2rem; }
+            .products-grid { grid-template-columns: 1fr; }
+            nav a { display: block; margin: 0.5rem 0; }
+            .waitlist-form { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <div class="neon-bg"></div>
+
+    <header>
+        <div class="logo">🦞</div>
+        <h1>MERCH</h1>
+        <p class="tagline">Rep the Movement</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="membership.html">Join</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="merch.html" style="border-color: #ff006e; color: #ff006e;">Merch</a>
+        <a href="about.html">About</a>
+        <a href="portal/index.html">Member Portal</a>
+    </nav>
+
+    <div class="container">
+        <div class="intro">
+            <p><strong>This ain't merch. It's a statement.</strong></p>
+            <p>Every piece is made for people who work hard, party harder, and refuse to apologize for who they are.</p>
+            <p>Products launching soon. Get on the waitlist below to be first in line.</p>
+        </div>
+
+        <h2 class="section-title">The Lineup</h2>
+
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">🧢</div>
+                <div class="product-info">
+                    <h3 class="product-title">Lobster Force Snapback</h3>
+                    <p class="product-desc">Classic black snapback with embroidered lobster logo. Business in the front, party on your head.</p>
+                    <div class="product-price">$35</div>
+                    <button class="product-button">Coming Soon</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">👕</div>
+                <div class="product-info">
+                    <h3 class="product-title">OG Lobster Tee</h3>
+                    <p class="product-desc">Premium heavyweight cotton. Front logo, back motto: "No Apologies. Just Mullets." Unisex fit.</p>
+                    <div class="product-price">$30</div>
+                    <button class="product-button">Coming Soon</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">🦞</div>
+                <div class="product-info">
+                    <h3 class="product-title">"Business/Party" Tee</h3>
+                    <p class="product-desc">The motto that started it all. Clean front design, bold statement on the back. Available in black, navy, and vintage white.</p>
+                    <div class="product-price">$28</div>
+                    <button class="product-button">Coming Soon</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">🎽</div>
+                <div class="product-info">
+                    <h3 class="product-title">Trap Master Tank</h3>
+                    <p class="product-desc">For the gym, the jobsite, or the dive bar. Show off those working arms. Lobster Force triple-logo on chest.</p>
+                    <div class="product-price">$25</div>
+                    <button class="product-button">Coming Soon</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">🧥</div>
+                <div class="product-info">
+                    <h3 class="product-title">Crustacean Hoodie</h3>
+                    <p class="product-desc">Heavyweight pullover with kangaroo pocket. Embroidered lobster on chest, full "Work Hard, Molt Harder" on back.</p>
+                    <div class="product-price">$55</div>
+                    <button class="product-button">Coming Soon</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">🍺</div>
+                <div class="product-info">
+                    <h3 class="product-title">Lobster Force Koozie</h3>
+                    <p class="product-desc">Keep your beer cold and your vibe colder. Neoprene insulator with neon print logo. Because hydration matters.</p>
+                    <div class="product-price">$8</div>
+                    <button class="product-button">Coming Soon</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">🪝</div>
+                <div class="product-info">
+                    <h3 class="product-title">Sticker Pack</h3>
+                    <p class="product-desc">Five die-cut vinyl stickers. Waterproof, UV-resistant. Perfect for toolboxes, laptops, bumpers, and beer fridges.</p>
+                    <div class="product-price">$10</div>
+                    <button class="product-button">Coming Soon</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">🎸</div>
+                <div class="product-info">
+                    <h3 class="product-title">Mullet Towel</h3>
+                    <p class="product-desc">Beach towel or shop rag, you decide. 100% cotton, oversized, with edge-to-edge neon gradient print. Multi-purpose like your hair.</p>
+                    <div class="product-price">$40</div>
+                    <button class="product-button">Coming Soon</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="waitlist-box">
+            <h3>Join the Waitlist</h3>
+            <p>Be the first to know when merch drops. No spam, just launch alerts and maybe a discount code for early supporters.</p>
+            <form class="waitlist-form" onsubmit="joinWaitlist(event)">
+                <input type="email" class="waitlist-input" placeholder="Your email" required>
+                <button type="submit" class="waitlist-button">Notify Me</button>
+            </form>
+            <p id="waitlistMessage" style="margin-top: 1rem; color: #3a86ff; display: none;">You're on the list! 🦞</p>
+        </div>
+
+        <div style="text-align: center; margin: 4rem 0; font-family: Arial, sans-serif; font-weight: normal;">
+            <h2 style="color: #8338ec; font-size: 2rem; margin-bottom: 1rem;">Custom Orders?</h2>
+            <p style="font-size: 1.1rem; line-height: 1.8; max-width: 600px; margin: 0 auto;">
+                Need a bulk order for your crew, shop, or bar? Looking for custom designs? 
+                <a href="contact.html" style="color: #ff006e; text-decoration: underline;">Hit us up</a> and let's talk.
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p style="color: #ff006e; font-weight: bold; margin-bottom: 1rem;">🦞 No apologies. Just mullets. 🦞</p>
+        <p style="color: #888;">
+            <a href="about.html" style="color: #888; text-decoration: none;">About</a> | 
+            <a href="faq.html" style="color: #888; text-decoration: none;">FAQ</a> | 
+            <a href="contact.html" style="color: #888; text-decoration: none;">Contact</a> | 
+            <a href="terms.html" style="color: #888; text-decoration: none;">Terms</a> | 
+            <a href="privacy.html" style="color: #888; text-decoration: none;">Privacy</a>
+        </p>
+    </footer>
+
+    <script>
+        function joinWaitlist(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('input').value;
+            
+            // TODO: Integrate with email service or backend
+            console.log('Waitlist signup:', email);
+            
+            // Show success message
+            document.getElementById('waitlistMessage').style.display = 'block';
+            event.target.querySelector('input').value = '';
+            
+            setTimeout(() => {
+                document.getElementById('waitlistMessage').style.display = 'none';
+            }, 5000);
+        }
+    </script>
+</body>
+</html>

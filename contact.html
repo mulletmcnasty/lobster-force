@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Lobster Force</title>
+    <meta name="description" content="Get in touch with Lobster Force. Questions, ideas, or just want to say hey? We're listening.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial Black', Arial, sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .neon-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ff006e 0%, #8338ec 50%, #3a86ff 100%);
+            opacity: 0.15;
+            z-index: -1;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.15; }
+            50% { opacity: 0.25; }
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 2rem 2rem;
+        }
+
+        .logo {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            letter-spacing: 0.1em;
+            text-shadow: 0 0 10px #ff006e, 0 0 20px #ff006e;
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: #ff006e;
+            font-family: Arial, sans-serif;
+            font-weight: normal;
+            margin-bottom: 2rem;
+        }
+
+        nav {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-family: Arial, sans-serif;
+            font-weight: normal;
+            padding: 0.5rem 1rem;
+            border: 1px solid transparent;
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            border-color: #ff006e;
+            color: #ff006e;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-family: Arial, sans-serif;
+            font-weight: normal;
+        }
+
+        .intro p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #ccc;
+            margin-bottom: 1rem;
+        }
+
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .contact-card {
+            background: rgba(255,255,255,0.05);
+            border: 2px solid #8338ec;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .contact-card:hover {
+            border-color: #ff006e;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255,0,110,0.3);
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h3 {
+            font-size: 1.3rem;
+            color: #3a86ff;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card a {
+            color: #fff;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-weight: normal;
+            font-size: 1rem;
+        }
+
+        .contact-card a:hover {
+            color: #ff006e;
+        }
+
+        .contact-form {
+            background: rgba(255,255,255,0.05);
+            border: 2px solid #ff006e;
+            padding: 3rem;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+        }
+
+        .contact-form h2 {
+            font-size: 2rem;
+            color: #ff006e;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 1rem;
+            color: #3a86ff;
+            margin-bottom: 0.5rem;
+            font-family: Arial, sans-serif;
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(0,0,0,0.5);
+            border: 1px solid #8338ec;
+            color: #fff;
+            font-size: 1rem;
+            border-radius: 8px;
+            font-family: Arial, sans-serif;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: #ff006e;
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-button {
+            width: 100%;
+            padding: 1.25rem;
+            background: linear-gradient(135deg, #ff006e, #8338ec);
+            border: none;
+            color: #fff;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Arial Black', Arial, sans-serif;
+            transition: all 0.3s;
+        }
+
+        .form-button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 30px rgba(255,0,110,0.6);
+        }
+
+        .form-message {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            display: none;
+        }
+
+        .form-message.success {
+            background: rgba(58,134,255,0.2);
+            border: 1px solid #3a86ff;
+            color: #3a86ff;
+        }
+
+        .form-message.error {
+            background: rgba(255,0,110,0.2);
+            border: 1px solid #ff006e;
+            color: #ff006e;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            font-family: Arial, sans-serif;
+            font-weight: normal;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .logo { font-size: 3rem; }
+            h1 { font-size: 2rem; }
+            nav a { display: block; margin: 0.5rem 0; }
+            .contact-methods { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="neon-bg"></div>
+
+    <header>
+        <div class="logo">🦞</div>
+        <h1>CONTACT</h1>
+        <p class="tagline">Let's Talk</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="membership.html">Join</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="merch.html">Merch</a>
+        <a href="about.html">About</a>
+        <a href="portal/index.html">Member Portal</a>
+    </nav>
+
+    <div class="container">
+        <div class="intro">
+            <p>Questions? Ideas? Just want to say hey?</p>
+            <p><strong>We're listening.</strong></p>
+        </div>
+
+        <div class="contact-methods">
+            <div class="contact-card">
+                <div class="contact-icon">📧</div>
+                <h3>Email</h3>
+                <a href="mailto:hello@lobsterforce.com">hello@lobsterforce.com</a>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">💬</div>
+                <h3>Discord</h3>
+                <a href="https://discord.gg/lobsterforce" target="_blank">Join Server</a>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">📸</div>
+                <h3>Instagram</h3>
+                <a href="https://instagram.com/lobsterforce" target="_blank">@lobsterforce</a>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">🐦</div>
+                <h3>Twitter</h3>
+                <a href="https://twitter.com/lobsterforce" target="_blank">@lobsterforce</a>
+            </div>
+        </div>
+
+        <div class="contact-form">
+            <h2>Send Us a Message</h2>
+            <form id="contactForm" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label class="form-label" for="name">Name</label>
+                    <input type="text" id="name" class="form-input" placeholder="Your name" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="email">Email</label>
+                    <input type="email" id="email" class="form-input" placeholder="your@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="subject">Subject</label>
+                    <select id="subject" class="form-select" required>
+                        <option value="">Select a topic...</option>
+                        <option value="general">General Question</option>
+                        <option value="membership">Membership Inquiry</option>
+                        <option value="merch">Merch / Custom Orders</option>
+                        <option value="chapter">Start a Local Chapter</option>
+                        <option value="partnership">Partnership / Collaboration</option>
+                        <option value="press">Press / Media</option>
+                        <option value="feedback">Feedback / Suggestions</option>
+                        <option value="other">Something Else</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="message">Message</label>
+                    <textarea id="message" class="form-textarea" placeholder="Tell us what's on your mind..." required></textarea>
+                </div>
+
+                <button type="submit" class="form-button">Send Message</button>
+                
+                <div id="formMessage" class="form-message"></div>
+            </form>
+        </div>
+
+        <div style="text-align: center; font-family: Arial, sans-serif; font-weight: normal; color: #888;">
+            <p style="font-size: 0.9rem; line-height: 1.8;">
+                <strong>Response Time:</strong> We typically respond within 24-48 hours.<br>
+                For urgent matters, DM us on Instagram or Discord.
+            </p>
+            <p style="font-size: 0.9rem; margin-top: 1rem;">
+                <strong>Press inquiries:</strong> <a href="mailto:press@lobsterforce.com" style="color: #ff006e;">press@lobsterforce.com</a>
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p style="color: #ff006e; font-weight: bold; margin-bottom: 1rem;">🦞 No apologies. Just mullets. 🦞</p>
+        <p style="color: #888;">
+            <a href="about.html" style="color: #888; text-decoration: none;">About</a> | 
+            <a href="faq.html" style="color: #888; text-decoration: none;">FAQ</a> | 
+            <a href="contact.html" style="color: #888; text-decoration: none;">Contact</a> | 
+            <a href="terms.html" style="color: #888; text-decoration: none;">Terms</a> | 
+            <a href="privacy.html" style="color: #888; text-decoration: none;">Privacy</a>
+        </p>
+    </footer>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+
+            const messageDiv = document.getElementById('formMessage');
+            
+            // TODO: Integrate with backend or email service (e.g., FormSpree, EmailJS)
+            console.log('Form submission:', formData);
+            
+            // Show success message
+            messageDiv.textContent = 'Message sent! We\'ll get back to you soon. 🦞';
+            messageDiv.className = 'form-message success';
+            messageDiv.style.display = 'block';
+            
+            // Clear form
+            document.getElementById('contactForm').reset();
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                messageDiv.style.display = 'none';
+            }, 5000);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Lobster Force</title>
+    <meta name="description" content="Frequently asked questions about Lobster Force, mullets, membership, and the movement.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial Black', Arial, sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .neon-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ff006e 0%, #8338ec 50%, #3a86ff 100%);
+            opacity: 0.15;
+            z-index: -1;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.15; }
+            50% { opacity: 0.25; }
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 2rem 2rem;
+        }
+
+        .logo {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            letter-spacing: 0.1em;
+            text-shadow: 0 0 10px #ff006e, 0 0 20px #ff006e;
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: #ff006e;
+            font-family: Arial, sans-serif;
+            font-weight: normal;
+            margin-bottom: 2rem;
+        }
+
+        nav {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-family: Arial, sans-serif;
+            font-weight: normal;
+            padding: 0.5rem 1rem;
+            border: 1px solid transparent;
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            border-color: #ff006e;
+            color: #ff006e;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 4rem;
+            font-family: Arial, sans-serif;
+            font-weight: normal;
+        }
+
+        .intro p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #ccc;
+        }
+
+        .faq-section {
+            margin-bottom: 4rem;
+        }
+
+        .faq-section h2 {
+            font-size: 2rem;
+            color: #ff006e;
+            text-shadow: 0 0 20px rgba(255,0,110,0.6);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .faq-item {
+            background: rgba(255,255,255,0.05);
+            border: 2px solid #8338ec;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            border-color: #ff006e;
+            box-shadow: 0 10px 30px rgba(255,0,110,0.2);
+        }
+
+        .faq-question {
+            font-size: 1.4rem;
+            color: #3a86ff;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-toggle {
+            font-size: 1.5rem;
+            color: #8338ec;
+        }
+
+        .faq-answer {
+            font-family: Arial, sans-serif;
+            font-weight: normal;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #ccc;
+        }
+
+        .faq-answer p {
+            margin-bottom: 1rem;
+        }
+
+        .faq-answer strong {
+            color: #fff;
+        }
+
+        .cta-box {
+            text-align: center;
+            padding: 3rem;
+            background: linear-gradient(135deg, rgba(255,0,110,0.2), rgba(131,56,236,0.2));
+            border-radius: 15px;
+            margin: 4rem 0;
+        }
+
+        .cta-box h2 {
+            font-size: 2rem;
+            color: #ff006e;
+            margin-bottom: 1rem;
+        }
+
+        .cta-box p {
+            font-family: Arial, sans-serif;
+            font-weight: normal;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.5rem 3rem;
+            background: linear-gradient(135deg, #ff006e, #8338ec);
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.3rem;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255,0,110,0.6);
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            font-family: Arial, sans-serif;
+            font-weight: normal;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .logo { font-size: 3rem; }
+            h1 { font-size: 2rem; }
+            nav a { display: block; margin: 0.5rem 0; }
+            .faq-question { font-size: 1.2rem; }
+            .faq-answer { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="neon-bg"></div>
+
+    <header>
+        <div class="logo">🦞</div>
+        <h1>FAQ</h1>
+        <p class="tagline">Questions? We Got Answers.</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="membership.html">Join</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="merch.html">Merch</a>
+        <a href="about.html">About</a>
+        <a href="portal/index.html">Member Portal</a>
+    </nav>
+
+    <div class="container">
+        <div class="intro">
+            <p>Got questions? We've got answers. If you don't see what you're looking for, <a href="contact.html" style="color: #ff006e; text-decoration: underline;">hit us up</a>.</p>
+        </div>
+
+        <div class="faq-section">
+            <h2>About Lobster Force</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    What the hell is Lobster Force?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        <strong>Lobster Force is a movement</strong> for people who refuse to apologize for being themselves. 
+                        We're the crustacean coalition of the American mullet—a community built around authenticity, working-class pride, 
+                        and the belief that being weird is way cooler than being boring.
+                    </p>
+                    <p>
+                        Think of it as a social club, a lifestyle brand, and a middle finger to anyone who says you need to fit in.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Is this a joke?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        <strong>No.</strong> Well, kind of. But also no.
+                    </p>
+                    <p>
+                        It started as a joke in a dive bar. But the more we talked about it, the more we realized: 
+                        people need this. They need permission to be unapologetically themselves. They need a community 
+                        that celebrates the weird, the loud, and the authentic.
+                    </p>
+                    <p>
+                        So yeah, we're dead serious. But we don't take ourselves too seriously. That's the whole point.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Why lobsters?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        Lobsters are <strong>hard on the outside, soft on the inside.</strong> They molt to grow. 
+                        They're bottom-feeders who turned into a delicacy. They're scrappy, resilient, and kind of weird-looking.
+                    </p>
+                    <p>
+                        Plus, they're red—like neon signs, dive bars, and the best kind of Saturday nights.
+                    </p>
+                    <p>
+                        Honestly? It just felt right. And sometimes that's all the reason you need.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <h2>Membership</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Do I need a mullet to join?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        <strong>Nope.</strong> You don't need a mullet. You need the <em>spirit</em> of a mullet.
+                    </p>
+                    <p>
+                        Business in the front, party in the back. Professional when you need to be, wild when you want to be. 
+                        A refusal to apologize for who you are. That's what we're about.
+                    </p>
+                    <p>
+                        But hey, if you want to grow one, we'll cheer you on.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    How much does membership cost?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        Membership tiers are still being finalized. We're building this thing from scratch, 
+                        and we want to get it right. Expect options ranging from free community access to 
+                        premium memberships with exclusive perks.
+                    </p>
+                    <p>
+                        For now, you can join the movement for free by signing up on the <a href="membership.html" style="color: #ff006e; text-decoration: underline;">membership page</a>.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Is Lobster Force only for guys?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        <strong>Hell no.</strong> Lobster Force is for everyone—all genders, all backgrounds, all walks of life.
+                    </p>
+                    <p>
+                        The mullet doesn't discriminate. Neither do we. If you've got the spirit, you're in.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    What do members get?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>We're still building the perks, but here's what's coming:</p>
+                    <ul style="margin-left: 2rem; line-height: 2;">
+                        <li>Access to the Lobster Force community (Discord, events, meetups)</li>
+                        <li>Member-only merch drops and discounts</li>
+                        <li>Voting rights on community decisions</li>
+                        <li>Your mullet featured in the gallery</li>
+                        <li>Invites to exclusive dive bar hangouts and mullet competitions</li>
+                    </ul>
+                    <p style="margin-top: 1rem;">
+                        Premium tiers will get even more: physical membership cards, signed prints, 
+                        and the eternal glory of being a Trap Master.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <h2>Mullets & Hair</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    How do I grow a proper mullet?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        <strong>Step 1:</strong> Stop cutting the back. Let it grow. Resist the urge to trim.
+                    </p>
+                    <p>
+                        <strong>Step 2:</strong> Keep the front and sides clean. That's the "business" part.
+                    </p>
+                    <p>
+                        <strong>Step 3:</strong> Be patient. Rome wasn't built in a day. Neither was Billy Ray Cyrus.
+                    </p>
+                    <p>
+                        <strong>Step 4:</strong> Own it. Confidence is half the mullet.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Can I have a modern mullet or does it need to be retro?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        <strong>Your mullet, your rules.</strong> Classic, modern, hockey, country, wolf-cut—it all counts.
+                    </p>
+                    <p>
+                        As long as it's business in the front and party in the back, you're golden.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    I'm bald. Can I still join?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        <strong>Absolutely.</strong> The mullet is a state of mind. You don't need hair to have the spirit.
+                    </p>
+                    <p>
+                        Some of the most legendary Lobster Force members are bald as hell. They just rock it harder than anyone.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <h2>Community & Culture</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Where does Lobster Force hang out?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        Right now? Mostly online. We've got a Discord server (invite coming soon) and we're active on 
+                        <a href="https://instagram.com/lobsterforce" style="color: #ff006e; text-decoration: underline;">Instagram</a> 
+                        and <a href="https://twitter.com/lobsterforce" style="color: #ff006e; text-decoration: underline;">Twitter</a>.
+                    </p>
+                    <p>
+                        In-person meetups are in the works. Think: dive bars, beach bonfires, mullet competitions, and possibly a bowling league.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Is Lobster Force political?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        <strong>No.</strong> Lobster Force is about authenticity, not politics.
+                    </p>
+                    <p>
+                        We don't care who you vote for, where you're from, or what you believe. 
+                        If you respect people and you're real, you're welcome here.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Can I start a local Lobster Force chapter?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        <strong>Hell yeah.</strong> We're all about grassroots chapters—local crews who meet up, 
+                        throw events, and spread the mullet gospel.
+                    </p>
+                    <p>
+                        <a href="contact.html" style="color: #ff006e; text-decoration: underline;">Reach out to us</a> 
+                        and we'll help you get started. We'll even send you some free stickers.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-box">
+            <h2>Still Have Questions?</h2>
+            <p>We're here to help. Drop us a line.</p>
+            <a href="contact.html" class="cta-button">Contact Us</a>
+        </div>
+    </div>
+
+    <footer>
+        <p style="color: #ff006e; font-weight: bold; margin-bottom: 1rem;">🦞 No apologies. Just mullets. 🦞</p>
+        <p style="color: #888;">
+            <a href="about.html" style="color: #888; text-decoration: none;">About</a> | 
+            <a href="faq.html" style="color: #888; text-decoration: none;">FAQ</a> | 
+            <a href="contact.html" style="color: #888; text-decoration: none;">Contact</a> | 
+            <a href="terms.html" style="color: #888; text-decoration: none;">Terms</a> | 
+            <a href="privacy.html" style="color: #888; text-decoration: none;">Privacy</a>
+        </p>
+    </footer>
+</body>
+</html>
