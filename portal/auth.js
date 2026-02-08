@@ -10,9 +10,9 @@
  * 4. Enable Email Auth in Supabase dashboard
  */
 
-// Supabase Configuration (replace with your actual values)
-const SUPABASE_URL = 'https://YOUR_PROJECT.supabase.co';
-const SUPABASE_ANON_KEY = 'YOUR_ANON_KEY_HERE';
+// Supabase Configuration
+const SUPABASE_URL = 'https://xvsdpufvuxsqozhqihmv.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh2c2RwdWZ2dXhzcW96aHFpaG12Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA1NjM0NDMsImV4cCI6MjA4NjEzOTQ0M30.8p6Ls7Gf5XuzbHtgzDGMP23l93w5Z15GIRgenSET6Dc';
 
 // Initialize Supabase client
 const supabase = supabase ? supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
