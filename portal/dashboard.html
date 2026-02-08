@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Lobster Force</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="neon-bg"></div>
+    
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <div>
+                <div class="logo" style="font-size: 3rem; display: inline;">🦞</div>
+                <h1 style="display: inline; margin-left: 1rem;">LOBSTER FORCE</h1>
+            </div>
+            <div class="dashboard-nav">
+                <a href="dashboard.html" class="nav-button active">Dashboard</a>
+                <a href="profile.html" class="nav-button">Profile</a>
+                <a href="badge.html" class="nav-button">My Badge</a>
+                <a href="submit.html" class="nav-button">Submit Mullet</a>
+                <button onclick="handleLogout()" class="nav-button">Logout</button>
+            </div>
+        </div>
+
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            <p>Loading your dashboard...</p>
+        </div>
+
+        <div id="dashboardContent" style="display: none;">
+            <!-- Welcome Section -->
+            <div class="card" style="text-align: center; margin-bottom: 2rem;">
+                <h2>Welcome back, <span id="userName">Member</span>! 🦞</h2>
+                <p class="tier-badge" id="userTier">Loading...</p>
+                <p style="margin-top: 1rem;">Business in the front, party in the back.</p>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="dashboard-grid">
+                <!-- Membership Status -->
+                <div class="card">
+                    <h3>Membership Status</h3>
+                    <div class="stat-grid">
+                        <div class="stat">
+                            <div class="stat-value" id="tierName">-</div>
+                            <div class="stat-label">Current Tier</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value" id="memberSince">-</div>
+                            <div class="stat-label">Member Since</div>
+                        </div>
+                    </div>
+                    <p style="margin-top: 1rem;">
+                        <a href="#" onclick="openBillingPortal()" style="color: #ff006e; text-decoration: none;">
+                            Manage Subscription →
+                        </a>
+                    </p>
+                </div>
+
+                <!-- Discord Access -->
+                <div class="card">
+                    <h3>Community Access</h3>
+                    <p>Join the Lobster Force Discord server and connect with fellow mullet enthusiasts.</p>
+                    <button onclick="window.open('https://discord.gg/lobsterforce', '_blank')" class="cta-button secondary">
+                        Join Discord
+                    </button>
+                </div>
+
+                <!-- Member Badge -->
+                <div class="card">
+                    <h3>Your Member Badge</h3>
+                    <p>Download your digital membership card and show the world you're Lobster Force.</p>
+                    <button onclick="window.location.href='badge.html'" class="cta-button secondary">
+                        View Badge
+                    </button>
+                </div>
+
+                <!-- Mullet Gallery -->
+                <div class="card">
+                    <h3>Mullet Gallery</h3>
+                    <p>Share your flow with the community. Submit your mullet photo to be featured.</p>
+                    <button onclick="window.location.href='submit.html'" class="cta-button secondary">
+                        Submit Photo
+                    </button>
+                </div>
+
+                <!-- Merch Store -->
+                <div class="card">
+                    <h3>Exclusive Merch</h3>
+                    <p>Browse member-only merch drops. Early access and special discounts for you.</p>
+                    <div id="memberDiscount" style="margin: 1rem 0; padding: 0.5rem; background: rgba(58,134,255,0.2); border-radius: 5px; display: none;">
+                        <strong>Your Discount:</strong> <span id="discountAmount">10%</span>
+                    </div>
+                    <button onclick="window.location.href='../merch.html'" class="cta-button secondary">
+                        Shop Merch
+                    </button>
+                </div>
+
+                <!-- Resources -->
+                <div class="card">
+                    <h3>Member Resources</h3>
+                    <p>Guides, tutorials, and exclusive content for members.</p>
+                    <ul style="text-align: left; list-style: none; padding: 0; margin-top: 1rem;">
+                        <li style="margin-bottom: 0.5rem;">📖 <a href="../MANIFESTO.md" style="color: #3a86ff; text-decoration: none;">Read the Manifesto</a></li>
+                        <li style="margin-bottom: 0.5rem;">💈 <a href="#" style="color: #3a86ff; text-decoration: none;">Mullet Care Guide</a></li>
+                        <li style="margin-bottom: 0.5rem;">🎥 <a href="#" style="color: #3a86ff; text-decoration: none;">Beach Bar Sessions</a></li>
+                        <li style="margin-bottom: 0.5rem;">👥 <a href="#" style="color: #3a86ff; text-decoration: none;">Member Directory</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="card">
+                <h3>Recent Activity</h3>
+                <div id="activityFeed">
+                    <p style="color: #888; font-family: Arial, sans-serif; font-weight: normal;">
+                        No recent activity to show. Start engaging with the community!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="auth.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>

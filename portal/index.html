@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Portal - Lobster Force</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="neon-bg"></div>
+    
+    <div class="portal-container">
+        <div class="logo">🦞</div>
+        <h1>MEMBER PORTAL</h1>
+        <p class="tagline">Business in the front, party in the back</p>
+
+        <!-- Login Form -->
+        <div id="loginForm" class="form-container">
+            <h2>Sign In</h2>
+            <form onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="cta-button">Sign In</button>
+            </form>
+            <p class="form-footer">
+                Don't have an account? <a href="../membership.html">Join now</a><br>
+                <a href="#" onclick="showPasswordReset()">Forgot password?</a>
+            </p>
+        </div>
+
+        <!-- Password Reset Form -->
+        <div id="resetForm" class="form-container" style="display: none;">
+            <h2>Reset Password</h2>
+            <form onsubmit="handlePasswordReset(event)">
+                <div class="form-group">
+                    <label for="resetEmail">Email</label>
+                    <input type="email" id="resetEmail" required placeholder="your@email.com">
+                </div>
+                <button type="submit" class="cta-button">Send Reset Link</button>
+            </form>
+            <p class="form-footer">
+                <a href="#" onclick="showLogin()">Back to login</a>
+            </p>
+        </div>
+
+        <!-- Error/Success Messages -->
+        <div id="message" class="message" style="display: none;"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="auth.js"></script>
+</body>
+</html>

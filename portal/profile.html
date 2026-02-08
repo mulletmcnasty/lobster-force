@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Lobster Force</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="neon-bg"></div>
+    
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <div>
+                <div class="logo" style="font-size: 3rem; display: inline;">🦞</div>
+                <h1 style="display: inline; margin-left: 1rem;">LOBSTER FORCE</h1>
+            </div>
+            <div class="dashboard-nav">
+                <a href="dashboard.html" class="nav-button">Dashboard</a>
+                <a href="profile.html" class="nav-button active">Profile</a>
+                <a href="badge.html" class="nav-button">My Badge</a>
+                <a href="submit.html" class="nav-button">Submit Mullet</a>
+                <button onclick="handleLogout()" class="nav-button">Logout</button>
+            </div>
+        </div>
+
+        <div class="card" style="max-width: 700px; margin: 0 auto;">
+            <h2 style="text-align: center; margin-bottom: 2rem;">Your Profile</h2>
+
+            <form id="profileForm" onsubmit="handleProfileUpdate(event)">
+                <!-- Name -->
+                <div class="form-group">
+                    <label for="name">Display Name</label>
+                    <input type="text" id="name" placeholder="Your name">
+                </div>
+
+                <!-- Email (read-only) -->
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" readonly style="opacity: 0.6; cursor: not-allowed;">
+                    <p style="font-family: Arial, sans-serif; font-size: 0.85rem; color: #888; margin-top: 0.25rem;">
+                        Contact support to change your email
+                    </p>
+                </div>
+
+                <!-- Bio -->
+                <div class="form-group">
+                    <label for="bio">Bio</label>
+                    <textarea id="bio" placeholder="Tell us about yourself and your mullet journey..."></textarea>
+                </div>
+
+                <!-- Instagram -->
+                <div class="form-group">
+                    <label for="instagram">Instagram Handle</label>
+                    <input type="text" id="instagram" placeholder="@yourusername">
+                </div>
+
+                <!-- Profile Image Upload -->
+                <div class="form-group">
+                    <label for="profileImage">Profile Image</label>
+                    <input type="file" id="profileImage" accept="image/*" onchange="previewProfileImage(event)">
+                    <div id="profileImagePreview" style="margin-top: 1rem; display: none;">
+                        <img id="profilePreviewImg" style="max-width: 200px; border-radius: 50%;" alt="Profile Preview">
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="cta-button">
+                    Save Changes
+                </button>
+            </form>
+
+            <div id="profileMessage" class="message" style="display: none; margin-top: 2rem;"></div>
+        </div>
+
+        <!-- Account Settings Card -->
+        <div class="card" style="max-width: 700px; margin: 2rem auto;">
+            <h3>Account Settings</h3>
+            
+            <div style="margin: 1.5rem 0;">
+                <h4 style="color: #3a86ff; margin-bottom: 0.5rem;">Subscription</h4>
+                <p id="subscriptionStatus" style="font-family: Arial, sans-serif; font-weight: normal; color: #ccc; margin-bottom: 1rem;">
+                    Loading...
+                </p>
+                <button onclick="openBillingPortal()" class="cta-button secondary">
+                    Manage Subscription
+                </button>
+            </div>
+
+            <div style="margin: 1.5rem 0; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                <h4 style="color: #3a86ff; margin-bottom: 0.5rem;">Password</h4>
+                <p style="font-family: Arial, sans-serif; font-weight: normal; color: #ccc; margin-bottom: 1rem;">
+                    Change your password or reset it if you've forgotten.
+                </p>
+                <button onclick="showPasswordChange()" class="cta-button secondary">
+                    Change Password
+                </button>
+            </div>
+
+            <div style="margin: 1.5rem 0; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                <h4 style="color: #ff006e; margin-bottom: 0.5rem;">Danger Zone</h4>
+                <p style="font-family: Arial, sans-serif; font-weight: normal; color: #ccc; margin-bottom: 1rem;">
+                    Delete your account and all associated data. This action cannot be undone.
+                </p>
+                <button onclick="confirmDeleteAccount()" class="cta-button outline" style="border-color: #ff006e; color: #ff006e;">
+                    Delete Account
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="auth.js"></script>
+    <script>
+        // Load profile data
+        async function loadProfile() {
+            const session = await getSession();
+            if (!session || !session.user) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            // Get user data
+            const userData = await getUserData(session.user.id);
+            
+            // Populate form
+            document.getElementById('name').value = userData.name || '';
+            document.getElementById('email').value = session.user.email;
+            document.getElementById('bio').value = userData.bio || '';
+            document.getElementById('instagram').value = userData.instagram_handle || '';
+
+            // Update subscription status
+            const tier = userData.tier || 'shrimp';
+            document.getElementById('subscriptionStatus').textContent = 
+                tier === 'shrimp' ? 'Free tier' : `${tier.charAt(0).toUpperCase() + tier.slice(1)} member`;
+        }
+
+        // Handle profile update
+        async function handleProfileUpdate(event) {
+            event.preventDefault();
+            
+            const messageEl = document.getElementById('profileMessage');
+            const submitBtn = event.target.querySelector('button[type="submit"]');
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Saving...';
+            
+            try {
+                const session = await getSession();
+                if (!session || !session.user) throw new Error('Not authenticated');
+                
+                const updates = {
+                    name: document.getElementById('name').value,
+                    bio: document.getElementById('bio').value,
+                    instagram_handle: document.getElementById('instagram').value,
+                    updated_at: new Date().toISOString()
+                };
+                
+                if (supabase) {
+                    const { error } = await supabase
+                        .from('members')
+                        .update(updates)
+                        .eq('id', session.user.id);
+                    
+                    if (error) throw error;
+                }
+                
+                messageEl.textContent = 'Profile updated successfully!';
+                messageEl.className = 'message success';
+                messageEl.style.display = 'block';
+                
+            } catch (error) {
+                console.error('Profile update error:', error);
+                messageEl.textContent = `Error: ${error.message}`;
+                messageEl.className = 'message error';
+                messageEl.style.display = 'block';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Save Changes';
+            }
+        }
+
+        // Preview profile image
+        function previewProfileImage(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                document.getElementById('profilePreviewImg').src = e.target.result;
+                document.getElementById('profileImagePreview').style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Password change
+        function showPasswordChange() {
+            alert('Password change coming soon! For now, use the "Forgot password" link on the login page.');
+        }
+
+        // Delete account
+        function confirmDeleteAccount() {
+            const confirmed = confirm(
+                'Are you sure you want to delete your account?\n\n' +
+                'This will permanently delete:\n' +
+                '- Your profile and all data\n' +
+                '- Your submitted mullet photos\n' +
+                '- Your membership status\n\n' +
+                'This action CANNOT be undone.'
+            );
+            
+            if (confirmed) {
+                const doubleCheck = confirm('This is your last chance. Really delete everything?');
+                if (doubleCheck) {
+                    alert('Account deletion coming soon. For now, contact mullet@mulletmcnasty.com to delete your account.');
+                }
+            }
+        }
+
+        // Placeholder getUserData (will use from dashboard.js in production)
+        async function getUserData(userId) {
+            if (!supabase || userId === 'demo-user') {
+                return {
+                    name: 'Demo User',
+                    tier: 'lobster',
+                    bio: 'Living the mullet lifestyle since 2026',
+                    instagram_handle: '@demo_user',
+                    member_since: '2026-02-08'
+                };
+            }
+            
+            try {
+                const { data, error } = await supabase
+                    .from('members')
+                    .select('*')
+                    .eq('id', userId)
+                    .single();
+                
+                if (error) return { name: 'Member', tier: 'shrimp' };
+                return data;
+            } catch (error) {
+                return { name: 'Member', tier: 'shrimp' };
+            }
+        }
+
+        // Load profile on page load
+        document.addEventListener('DOMContentLoaded', loadProfile);
+    </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Mullet - Lobster Force</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="neon-bg"></div>
+    
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <div>
+                <div class="logo" style="font-size: 3rem; display: inline;">🦞</div>
+                <h1 style="display: inline; margin-left: 1rem;">LOBSTER FORCE</h1>
+            </div>
+            <div class="dashboard-nav">
+                <a href="dashboard.html" class="nav-button">Dashboard</a>
+                <a href="profile.html" class="nav-button">Profile</a>
+                <a href="badge.html" class="nav-button">My Badge</a>
+                <a href="submit.html" class="nav-button active">Submit Mullet</a>
+                <button onclick="handleLogout()" class="nav-button">Logout</button>
+            </div>
+        </div>
+
+        <div class="card" style="max-width: 700px; margin: 0 auto;">
+            <h2 style="text-align: center; margin-bottom: 1rem;">Submit Your Mullet</h2>
+            <p style="text-align: center; font-family: Arial, sans-serif; font-weight: normal; margin-bottom: 2rem; color: #ccc;">
+                Share your flow with the community. Best submissions get featured in the gallery!
+            </p>
+
+            <form id="submitForm" onsubmit="handleSubmit(event)">
+                <!-- Photo Upload -->
+                <div class="form-group">
+                    <label for="photo">Mullet Photo *</label>
+                    <input type="file" id="photo" accept="image/*" required onchange="previewImage(event)">
+                    <div id="imagePreview" style="margin-top: 1rem; display: none;">
+                        <img id="previewImg" style="max-width: 100%; border-radius: 10px;" alt="Preview">
+                    </div>
+                </div>
+
+                <!-- Title -->
+                <div class="form-group">
+                    <label for="title">Title *</label>
+                    <input type="text" id="title" required placeholder="e.g., My Flow Evolution">
+                </div>
+
+                <!-- Description -->
+                <div class="form-group">
+                    <label for="description">Tell us about your mullet</label>
+                    <textarea id="description" placeholder="When did you start growing it? What inspired you? Any stories to share?"></textarea>
+                </div>
+
+                <!-- Style -->
+                <div class="form-group">
+                    <label for="style">Mullet Style</label>
+                    <select id="style">
+                        <option value="">Select style (optional)</option>
+                        <option value="classic">Classic</option>
+                        <option value="modern">Modern</option>
+                        <option value="hockey">Hockey</option>
+                        <option value="country">Country</option>
+                        <option value="punk">Punk</option>
+                        <option value="professional">Professional</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <!-- Privacy -->
+                <div class="form-group">
+                    <label style="display: flex; align-items: center; cursor: pointer;">
+                        <input type="checkbox" id="consent" required style="width: auto; margin-right: 0.5rem;">
+                        <span style="font-family: Arial, sans-serif; font-weight: normal;">
+                            I consent to my photo being featured in the Lobster Force gallery and social media
+                        </span>
+                    </label>
+                </div>
+
+                <!-- Social Handles (Optional) -->
+                <div class="form-group">
+                    <label for="instagram">Instagram Handle (optional)</label>
+                    <input type="text" id="instagram" placeholder="@yourusername">
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="cta-button">
+                    Submit to Gallery
+                </button>
+            </form>
+
+            <div id="submitMessage" class="message" style="display: none; margin-top: 2rem;"></div>
+        </div>
+
+        <!-- Guidelines Card -->
+        <div class="card" style="max-width: 700px; margin: 2rem auto;">
+            <h3>Submission Guidelines</h3>
+            <ul style="font-family: Arial, sans-serif; font-weight: normal; line-height: 1.8; color: #ccc;">
+                <li>✓ High-quality photos work best (good lighting, clear focus)</li>
+                <li>✓ Show your mullet prominently (front and back shots welcome!)</li>
+                <li>✓ Be yourself — authenticity over perfection</li>
+                <li>✓ All skill levels welcome (first-timers to trap masters)</li>
+                <li>✗ No hate speech, nudity, or inappropriate content</li>
+                <li>✗ Must be your own photo (don't submit others' photos)</li>
+            </ul>
+            <p style="font-family: Arial, sans-serif; font-weight: normal; margin-top: 1rem; color: #888;">
+                <strong>What happens next?</strong> We review all submissions and feature the best ones in our gallery and social media. You'll get notified if yours is selected!
+            </p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="auth.js"></script>
+    <script src="submit.js"></script>
+</body>
+</html>

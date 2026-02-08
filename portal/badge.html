@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Badge - Lobster Force</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="neon-bg"></div>
+    
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <div>
+                <div class="logo" style="font-size: 3rem; display: inline;">🦞</div>
+                <h1 style="display: inline; margin-left: 1rem;">LOBSTER FORCE</h1>
+            </div>
+            <div class="dashboard-nav">
+                <a href="dashboard.html" class="nav-button">Dashboard</a>
+                <a href="profile.html" class="nav-button">Profile</a>
+                <a href="badge.html" class="nav-button active">My Badge</a>
+                <a href="submit.html" class="nav-button">Submit Mullet</a>
+                <button onclick="handleLogout()" class="nav-button">Logout</button>
+            </div>
+        </div>
+
+        <div class="card" style="max-width: 600px; margin: 0 auto;">
+            <h2 style="text-align: center; margin-bottom: 2rem;">Your Member Badge</h2>
+            
+            <!-- Badge Preview -->
+            <div class="member-badge" id="badgePreview">
+                <div class="badge-content">
+                    <div class="badge-logo">🦞</div>
+                    <div class="badge-name" id="badgeName">Loading...</div>
+                    <div class="badge-tier" id="badgeTier">Member</div>
+                    <div class="badge-id" id="badgeId">ID: #000000</div>
+                </div>
+            </div>
+
+            <div style="margin-top: 2rem; text-align: center;">
+                <button onclick="downloadBadge()" class="cta-button" style="margin-bottom: 1rem;">
+                    Download Badge
+                </button>
+                <button onclick="shareBadge()" class="cta-button secondary">
+                    Share on Social
+                </button>
+            </div>
+
+            <p style="margin-top: 2rem; text-align: center; font-family: Arial, sans-serif; font-weight: normal; color: #888; font-size: 0.9rem;">
+                Show your badge with pride. You're officially part of the movement.
+            </p>
+        </div>
+
+        <!-- Hidden canvas for badge generation -->
+        <canvas id="badgeCanvas" width="800" height="1000" style="display: none;"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="auth.js"></script>
+    <script src="badge.js"></script>
+</body>
+</html>
